@@ -1,0 +1,23 @@
+import openai
+
+openai.api_key = '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'
+
+model = "text-davinci-003"
+
+while True:
+    prompt = input("Ask a question: ")
+
+    if prompt == 'stop':
+        break
+
+    completion = openai.Completion.create(
+        engine=model,
+        prompt=prompt,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.6
+    )
+
+    response = completion.choices[0].text
+    print(response)
